@@ -1,12 +1,12 @@
 /**
   xonda
 */
-var stockReaderApp=angular.module('stockReaderApp', ['ngRoute']);
+var stockReaderApp=angular.module('stockReaderApp',['ngRoute']);
 
-stockReaderApp.config(function($routeProvider){
-   $routeProvider.
+stockReaderApp.config(['$routeProvider',function(routeProvider){
+   routeProvider.
        when('/', {
-           templateUrl: '../views/table-movimento.html',
+           templateUrl: './views/table-movimento.html',
            controller: 'stockReaderController'
        }).
        when('/fechamentoMaximo', {
@@ -32,40 +32,40 @@ stockReaderApp.config(function($routeProvider){
        otherwise({
            redirectTo: '/'
        });
-});
+}]);
 
 stockReaderApp.controller('stockReaderController',['$scope', '$http', function(scope, http){
-    http.get('http://localhost:8080/nonblocking').success(function(data){
+    http.get('api/nonblocking').success(function(data){
         scope.movimentacao = data;
     });
 }]);
 
 stockReaderApp.controller('fechamentoMaximoController',['$scope', '$http', function(scope, http) {
-    http.get('/nonblocking/fechamentoMaximo').success(function(data){
+    http.get('api/nonblocking/fechamentoMaximo').success(function(data){
         scope.movimentacao = data;
     });
 }]);
 
 stockReaderApp.controller('fechamentoMinimoController',['$scope', '$http', function(scope, http) {
-    http.get('/nonblocking/fechamentoMinimo').success(function(data){
+    http.get('api/nonblocking/fechamentoMinimo').success(function(data){
         scope.movimentacao = data;
     });
 }]);
 
 stockReaderApp.controller('retornoMaximoController',['$scope', '$http', function(scope, http) {
-    http.get('/nonblocking/retornoMaximo').success(function(data){
+    http.get('api/nonblocking/retornoMaximo').success(function(data){
         scope.movimentacao = data;
     });
 }]);
 
 stockReaderApp.controller('retornoMinimoController',['$scope', '$http', function(scope, http) {
-    http.get('/nonblocking/retornoMinimo').success(function(data){
+    http.get('api/nonblocking/retornoMinimo').success(function(data){
         scope.movimentacao = data;
     });
 }]);
 
 stockReaderApp.controller('volumeMedioController',['$scope', '$http', function(scope, http) {
-    http.get('/nonblocking/volumeMedio').success(function(data){
+    http.get('api/nonblocking/volumeMedio').success(function(data){
         scope.volumes = data;
     });
 }]);
