@@ -10,23 +10,23 @@ stockReaderApp.config(['$routeProvider',function(routeProvider){
            controller: 'stockReaderController'
        }).
        when('/fechamentoMaximo', {
-           templateUrl: '../views/table-movimento.html',
+           templateUrl: './views/table-movimento.html',
            controller: 'fechamentoMaximoController'
        }).
        when('/fechamentoMinimo', {
-           templateUrl: '../views/table-movimento.html',
+           templateUrl: './views/table-movimento.html',
            controller: 'fechamentoMinimoController'
        }).
        when('/retornoMaximo', {
-           templateUrl: '../views/table-movimento.html',
+           templateUrl: './views/table-movimento.html',
            controller: 'retornoMaximoController'
        }).
        when('/retornoMinimo', {
-           templateUrl: '../views/table-movimento.html',
+           templateUrl: './views/table-movimento.html',
            controller: 'retornoMinimoController'
        }).
        when('/volumeMedio', {
-           templateUrl: '../views/table-volume.html',
+           templateUrl: './views/table-volume.html',
            controller: 'volumeMedioController'
        }).
        otherwise({
