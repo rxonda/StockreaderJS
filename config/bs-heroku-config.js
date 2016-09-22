@@ -8,7 +8,7 @@ var options = {
 var apiProxy = proxy('/api', options);
 module.exports = function(bs){
   return {
-    port: 8090,
+    port: process.env.PORT,
     files: ["./**/*.{html,htm,css,js}"],
     server: {
       baseDir: "./",
