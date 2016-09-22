@@ -8,9 +8,10 @@
   "dependencies": {
     "node-static": "^0.7.8"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "scripts": {
-    "dev": "lite-server -c config/bs-config.js",
-    "start": "lite-server -c config/bs-heroku-config.js"
-    // "start": "static -p $PORT ."
+    "start": "static -p $PORT app"
   }
 }
