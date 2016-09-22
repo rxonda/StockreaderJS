@@ -9,8 +9,8 @@
     "node-static": "^0.7.8"
   },
   "scripts": {
-    "dev": "lite-server -c config/bs-config.js",
-    "herokuapp": "lite-server -c config/bs-heroku-config.js",
+  //  "dev": "lite-server -c config/bs-config.js",
+  //  "herokuapp": "lite-server -c config/bs-heroku-config.js",
     "start": "static -p $PORT ."
   }
 }
