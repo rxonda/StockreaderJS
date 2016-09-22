@@ -1,4 +1,6 @@
 {
+  "name": "stockreaderjs",
+  "version": "0.0.0",
   "devDependencies": {
     "http-proxy-middleware": "^0.17.1",
     "lite-server": "^2.2.2"
@@ -9,6 +11,6 @@
   "scripts": {
     "dev": "lite-server -c config/bs-config.js",
     "herokuapp": "lite-server -c config/bs-heroku-config.js",
-    "start": "static -p $PORT ./"
+    "start": "static -p $PORT ."
   }
 }
