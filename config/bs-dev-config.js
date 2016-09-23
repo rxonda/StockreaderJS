@@ -1,6 +1,6 @@
 var proxy = require('http-proxy-middleware');
 var options = {
-  target: "http://localhost:8081",
+  target: "http://localhost:8080",
   changeOrigin: true,             // for vhosted sites, changes host header to match to target's host
   logLevel: 'debug',
   pathRewrite: {'^/api' : ''}
