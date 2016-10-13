@@ -14,7 +14,7 @@
   "scripts": {
     "predev": "uglifyjs node_modules/angular/angular.min.js node_modules/angular-route/angular-route.min.js src/app.js -m -o app/app.min.js",
     "dev": "lite-server -c config/bs-dev-config.js",
-    "prestart": "uglifyjs src/app.js -m -o app/app.min.js",
+    "prestart": "uglifyjs node_modules/angular/angular.min.js node_modules/angular-route/angular-route.min.js src/app.js -m -o app/app.min.js",
     "start": "lite-server -c config/bs-heroku-config.js"
   }
 }
