@@ -1,20 +1,20 @@
 {
   "name": "stockreaderjs",
   "version": "0.0.0",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "http-proxy-middleware": "^0.17.1",
-    "lite-server": "^2.2.2",
     "angular": "^1.2.28",
     "angular-route": "^1.2.28",
-    "jQuery": "^1.7.4",
+    "http-proxy-middleware": "^0.17.1",
+    "jquery": "^1.7.4",
+    "lite-server": "^2.2.2",
+    "lodash": "^4.17.4",
     "uglify-js": "^2.7.3"
   },
   "scripts": {
-    "predev": "uglifyjs node_modules/angular/angular.min.js node_modules/angular-route/angular-route.min.js src/app.js -m -o app/app.min.js",
+    "predev": "uglifyjs node_modules/angular/angular.min.js node_modules/angular-route/angular-route.min.js node_modules/lodash/core.min.js node_modules/lodash/lodash.min.js src/urlMappings.js src/app.js -m -o app/app.min.js",
     "dev": "lite-server -c config/bs-dev-config.js",
-    "prestart": "uglifyjs node_modules/angular/angular.min.js node_modules/angular-route/angular-route.min.js src/app.js -m -o app/app.min.js",
+    "prestart": "uglifyjs node_modules/angular/angular.min.js node_modules/angular-route/angular-route.min.js node_modules/lodash/core.min.js node_modules/lodash/lodash.min.js src/urlMappings.js src/app.js -m -o app/app.min.js",
     "start": "lite-server -c config/bs-heroku-config.js"
   }
 }
