@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 
 app/app.min.js
+dist
