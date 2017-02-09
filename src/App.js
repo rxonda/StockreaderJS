@@ -16,9 +16,7 @@ class App extends React.Component {
   render() {
     let items = this.state.items;
 
-    return (
-      <div>
-      <nav className="navbar navbar-inverse navbar-fixed-top">
+    return (<div><nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container">
               <div className="navbar-header">
                   <a className="navbar-brand" href="#">Stock Reader</a>
@@ -41,9 +39,9 @@ class App extends React.Component {
               </div>
           </div>
       </nav>
-      <Movimento items={items} />
-      </div>
-    )
+      <div className="container">
+        <Movimento items={items} />
+      </div></div>)
   }
 }
 
@@ -66,6 +64,7 @@ const Movimento = (props) => {
   let items=props.items;
 
   return (<table className="table table-striped">
+      <tbody>
         <tr>
             <th>Ação</th>
             <th>Data</th>
@@ -73,6 +72,7 @@ const Movimento = (props) => {
             <th>Volume</th>
         </tr>
         {items.map(item =><ItemMovimento item={item} />)}
+      </tbody>
     </table>)
 }
 
