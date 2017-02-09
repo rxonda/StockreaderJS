@@ -2,8 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
+  constructor(){
+      super();
+      this.state = {items: []}
+  }
+
+  componentWillMount() {
+    fetch('api/nonblocking')
+    .then( reponse => reponse.json() )
+    .then( (results) => this.setState({items: results}))
+  }
+
   render() {
+    let items = this.state.items;
+
     return (
+      <div>
       <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container">
               <div className="navbar-header">
@@ -27,12 +41,30 @@ class App extends React.Component {
               </div>
           </div>
       </nav>
+      <Movimento items={items} />
+      </div>
     )
   }
 }
 
+const ItemMovimento = (props) => {
+  return (<tr>
+    <td>{props.item.id}</td>
+    <td>{props.item.date}</td>
+    <td>{props.item.close}</td>
+    <td>{props.item.volume}</td>
+  </tr>)}
+
+const ItemVolume = (props) => {
+  return (<tr>
+    <td>{props.item.id}</td>
+    <td>{props.item.volume}</td>
+  </tr>)}
+
 
 const Movimento = (props) => {
+  let items=props.items;
+
   return (<table className="table table-striped">
         <tr>
             <th>Ação</th>
@@ -40,28 +72,17 @@ const Movimento = (props) => {
             <th>Fechamento</th>
             <th>Volume</th>
         </tr>
-        <tr>
-            <td>{props.id}</td>
-            <td>{props.date}</td>
-            <td>{props.close}</td>
-            <td>{props.volume}</td>
-        </tr>
+        {items.map(item =><ItemMovimento item={item} />)}
     </table>)
 }
 
 const Volume = (props) => {
-  return (
-    <table className="table table-striped">
+  return (<table className="table table-striped">
         <tr>
             <th>Ação</th>
             <th>Volume</th>
         </tr>
-        <tr>
-            <td>{props.id}</td>
-            <td>{props.volume}</td>
-        </tr>
-    </table>
-      )
-}
+        {items.map(item =><ItemVolume item={item} />)}
+    </table>)}
 
 export default App

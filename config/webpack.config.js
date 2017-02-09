@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: './dist'
+    path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules: [
@@ -17,5 +17,14 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({template: './public/index.html'})
-  ]
+  ],
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080",
+        pathRewrite: {"^/api" : ""}
+      }
+    },
+    port: 3000
+  }
 };
