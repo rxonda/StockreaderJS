@@ -1,22 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-  constructor(){
-      super();
-      this.state = {items: []}
-  }
-
-  componentWillMount() {
-    fetch('api/nonblocking')
-    .then( reponse => reponse.json() )
-    .then( (results) => this.setState({items: results}))
+  constructor(props){
+      super(props);
   }
 
   render() {
-    let items = this.state.items;
-
-    return (<div><nav className="navbar navbar-inverse navbar-fixed-top">
+    return (
+      <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container">
               <div className="navbar-header">
                   <a className="navbar-brand" href="#">Stock Reader</a>
@@ -39,50 +30,7 @@ class App extends React.Component {
               </div>
           </div>
       </nav>
-      <div className="container">
-        <Movimento items={items} />
-      </div></div>)
-  }
+  )}
 }
-
-const ItemMovimento = (props) => {
-  return (<tr>
-    <td>{props.item.id}</td>
-    <td>{props.item.date}</td>
-    <td>{props.item.close}</td>
-    <td>{props.item.volume}</td>
-  </tr>)}
-
-const ItemVolume = (props) => {
-  return (<tr>
-    <td>{props.item.id}</td>
-    <td>{props.item.volume}</td>
-  </tr>)}
-
-
-const Movimento = (props) => {
-  let items=props.items;
-
-  return (<table className="table table-striped">
-      <tbody>
-        <tr>
-            <th>Ação</th>
-            <th>Data</th>
-            <th>Fechamento</th>
-            <th>Volume</th>
-        </tr>
-        {items.map(item =><ItemMovimento item={item} />)}
-      </tbody>
-    </table>)
-}
-
-const Volume = (props) => {
-  return (<table className="table table-striped">
-        <tr>
-            <th>Ação</th>
-            <th>Volume</th>
-        </tr>
-        {items.map(item =><ItemVolume item={item} />)}
-    </table>)}
 
 export default App

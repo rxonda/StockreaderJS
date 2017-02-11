@@ -5,11 +5,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Movimento from './Movimento'
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root')
+  document.getElementById('navbar')
 );
+
+fetch('api/nonblocking')
+  .then( reponse => reponse.json() )
+  .then( (results) => {
+    ReactDOM.render(
+      <Movimento items={results} />,
+      document.getElementById('content')
+    );
+  });
+
 
 
 
