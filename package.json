@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "webpack --config config/webpack.config.js",
-    "start": "webpack-dev-server --open --config config/webpack.config.js"
+    "start": "webpack-dev-server --open --config config/webpack.config.js",
+    "dev-start": "webpack-dev-server --open --config config/webpack.dev.config.js"
   }
 }
