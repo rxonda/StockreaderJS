@@ -1,6 +1,15 @@
 import React from 'react';
 
-const ItemMovimento = (props) => {
+const Items = ({items, renderItem, separator}) => {
+  return items.map((item, index) => (
+    <React.Fragment key={item.id+item.date}>
+      {renderItem(Object.assign({}, item, {index: index}))}
+      {index !== items.length - 1 && separator}
+    </React.Fragment>
+  ));
+}
+
+const ItemMovimento = ({data, index}) => {
   let options = [
     'pt-BR',
     {year: 'numeric',
@@ -8,46 +17,36 @@ const ItemMovimento = (props) => {
     day: 'numeric'}
   ]
   // let textDate = new Intl.DateTimeFormat('pt-BR', options).format(data);
-  let textDate = new Date(props.item.date).toLocaleString(...options);
-  let textClose = new Number(props.item.close).toLocaleString(...options);
+  let textDate = new Date(data.date).toLocaleString(...options);
+  let textClose = new Number(data.close).toLocaleString(...options);
 
   return (<tr>
-    <td>{props.item.id}</td>
-    <td>{textDate}</td>
-    <td>{textClose}</td>
-    <td>{props.item.volume}</td>
-  </tr>)}
-
-const ItemVolume = (props) => {
-  return (<tr>
-    <td>{props.item.id}</td>
-    <td>{props.item.volume}</td>
-  </tr>)}
-
-
-const Movimento = (props) => {
-  let items=props.items;
-
-  return (<table className="table table-striped">
-      <tbody>
-        <tr>
-            <th>Ação</th>
-            <th>Data</th>
-            <th>Fechamento</th>
-            <th>Volume</th>
-        </tr>
-        {items.map(item =><ItemMovimento item={item} />)}
-      </tbody>
-    </table>)
+    <td col="0" row={index}>{data.id}</td>
+    <td col="1" row={index}>{textDate}</td>
+    <td col="2" row={index}>{textClose}</td>
+    <td col="3" row={index}>{data.volume}</td>
+  </tr>);
 }
 
-const Volume = (props) => {
+const HeaderMovimento = () => {
+  return (<tr>
+    <th>Ação</th>
+    <th>Data</th>
+    <th>Fechamento</th>
+    <th>Volume</th>
+</tr>);
+}
+const Movimento = ({items}) => {
   return (<table className="table table-striped">
-        <tr>
-            <th>Ação</th>
-            <th>Volume</th>
-        </tr>
-        {items.map(item =><ItemVolume item={item} />)}
-    </table>)}
+  <tbody>
+    <HeaderMovimento />
+    <Items
+        items={items}
+        renderItem={ item => <ItemMovimento index={item.index} data={item} /> }
+        //          separator={<br/>}
+    />
+  </tbody>
+</table>);
+}
 
-export default Movimento
+export default Movimento;

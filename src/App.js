@@ -1,36 +1,40 @@
 import React from 'react';
+import {Switch, Route, Link} from 'react-router-dom';
+import Movimento from './Movimento';
+import Volume from './Volume';
+import connect from './connect';
 
-class App extends React.Component {
-  constructor(props){
-      super(props);
-  }
+const Header = () => {
+    return(<header><nav><ul>
+    <li><Link to='/'>Stock Reader</Link>
+        <ul>
+            <li><Link to="/fechamentoMaximo">Fechamento máximo</Link></li>
+            <li><Link to="/fechamentoMinimo">Fechamento mínimo</Link></li>
+            <li><Link to="/retornoMaximo">Retorno máximo</Link></li>
+            <li><Link to="/retornoMinimo">Retorno mínimo</Link></li>
+            <li><Link to="/volumeMedio">Volume médio por Ação</Link></li>
+        </ul>
+    </li>
+</ul></nav></header>);
+};
 
-  render() {
+const Main = () => {
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
-          <div className="container">
-              <div className="navbar-header">
-                  <a className="navbar-brand" href="#">Stock Reader</a>
-              </div>
-              <div id="navbar" className="collapse navbar-collapse">
-                  <ul className="nav navbar-nav">
-                      <li className="dropdown">
-                          <a className="dropdown-toggle" data-toggle="dropdown" role="button"
-                          aria-expanded="true">Testes <span className="caret"></span></a>
-                          <ul className="dropdown-menu" role="menu">
-                              <li><a href="#/fechamentoMaximo">Fechamento máximo</a></li>
-                              <li><a href="#/fechamentoMinimo">Fechamento mínimo</a></li>
-                              <li><a href="#/retornoMaximo">Retorno máximo</a></li>
-                              <li><a href="#/retornoMinimo">Retorno mínimo</a></li>
-                              <li className="divider"></li>
-                              <li><a href="#/volumeMedio">Volume médio por Ação</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-  )}
+    <Switch>
+        <Route exact path='/' component={connect("root")(Movimento)} />
+        <Route path='/fechamentoMaximo' component={connect("fechamentoMaximo")(Movimento)} />
+        <Route path='/fechamentoMinimo' component={connect("fechamentoMinimo")(Movimento)} />
+        <Route path='/retornoMaximo' component={connect("retornoMaximo")(Movimento)} />
+        <Route path='/retornoMinimo' component={connect("retornoMinimo")(Movimento)} />
+        <Route path='/volumeMedio' component={connect("volumeMedio")(Volume)} />
+    </Switch>);
+};
+
+const App = () => {
+    return (<div>
+    <Header />
+    <Main />
+</div>);
 }
 
-export default App
+export default App;
