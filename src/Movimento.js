@@ -36,12 +36,12 @@ const HeaderMovimento = () => {
     <th>Volume</th>
 </tr>);
 }
-const Movimento = ({items}) => {
+const Movimento = ({data}) => {
   return (<table className="table table-striped">
   <tbody>
     <HeaderMovimento />
     <Items
-        items={items}
+        items={data}
         renderItem={ item => <ItemMovimento index={item.index} data={item} /> }
         //          separator={<br/>}
     />

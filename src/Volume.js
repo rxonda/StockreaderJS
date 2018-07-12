@@ -7,14 +7,14 @@ const ItemVolume = ({item}) => {
   </tr>)
 };
 
-const Volume = ({items}) => {
+const Volume = ({data}) => {
   return (<table className="table table-striped">
     <tbody>
         <tr>
             <th>Ação</th>
             <th>Volume</th>
         </tr>
-        {items.map(item =><ItemVolume item={item} />)}
+        {data.map(item =><ItemVolume item={item} />)}
     </tbody>
 </table>);
 }
