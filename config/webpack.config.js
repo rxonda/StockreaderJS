@@ -25,10 +25,10 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
+        target: "https://stockreader.herokuapp.com",
         pathRewrite: {"^/api" : ""}
       }
     },
-    port: 3000
+    port: process.env.PORT
   }
 };
