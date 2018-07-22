@@ -25,7 +25,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "https://stockreader.herokuapp.com",
+        target: "http://stockreader.herokuapp.com",
         pathRewrite: {"^/api" : ""}
       }
     },
