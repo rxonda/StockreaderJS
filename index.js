@@ -14,7 +14,7 @@ var apiProxy = proxy(options);
 
 app.use(express.static(__dirname + '/dist'));
 
-app.use('/api', apiProxy(req,res));
+app.use('/api', apiProxy);
 
 app.use('/', function(req, res) {
     res.render('index');
