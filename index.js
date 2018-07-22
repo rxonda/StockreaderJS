@@ -14,9 +14,10 @@ var apiProxy = proxy(options);
 
 app.use(express.static(__dirname + '/dist'));
 
-app.use('/api', function(req, res) {
-    console.log('Requisitando o proxy....');
-    apiProxy(req,res);
+app.use('/api', apiProxy(req,res));
+
+app.use('/', function(req, res) {
+    res.render('index');
 });
 
 var port = process.env.PORT || 3000;
