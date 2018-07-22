@@ -19,6 +19,8 @@ app.use('/api', function(req, res) {
     apiProxy(req,res);
 });
 
-app.listen(3000, function() {
+var port = process.env.PORT || 3000;
+
+app.listen(port, function() {
     console.log('Servidor express listening na porta 3000');
 });
