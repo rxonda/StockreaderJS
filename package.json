@@ -22,7 +22,7 @@
     "uglify-js": "^2.7.3"
   },
   "scripts": {
-    "build": "webpack --config config/webpack.config.js",
+    "postinstall": "webpack --config config/webpack.config.js",
     "start": "node server.js",
     "dev-start": "webpack-dev-server --open --config config/webpack.dev.config.js"
   }
