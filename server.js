@@ -22,7 +22,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 app.use('/', function(req, res) {
-    res.render('index.html');
+    res.render(__dirname + '/index.html');
 });
 
 var port = process.env.PORT || 3000;
