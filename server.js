@@ -12,17 +12,15 @@ var options = {
 
 var app = express();
 
-var apiProxy = proxy(options);
+app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/dist'));
-
-app.use('/api', apiProxy);
+app.use('/api', proxy(options));
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 app.use('/', function(req, res) {
-    res.render(__dirname + '/index.html');
+    res.render('index.html');
 });
 
 var port = process.env.PORT || 3000;

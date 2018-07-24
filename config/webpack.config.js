@@ -6,8 +6,8 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, '../dist')
+    filename: 'app.js',
+    path: path.resolve(__dirname, '../public/js')
   },
   module: {
     rules: [
@@ -19,16 +19,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin({template: './public/index.html'})
-  ],
-  devServer: {
-    proxy: {
-      "/api": {
-        target: "http://stockreader.herokuapp.com",
-        pathRewrite: {"^/api" : ""}
-      }
-    },
-    port: process.env.PORT
-  }
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 };
